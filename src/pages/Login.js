@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
-const Register = () => {
+const Login = () => {
   const {
     register,
     formState: { errors },
@@ -10,39 +10,15 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = (data) => console.log(data);
+
   return (
-    <section className="bg-[#a7bcff]">
+    <section className="bg-[#253169]">
       <div className="md:h-screen flex flex-col justify-center items-center mx-auto px-6 py-8 lg:py-0">
-        <h1 className="text-4xl font-bold mb-5">SociaGuru</h1>
+        <h1 className="text-4xl text-white font-bold mb-5">SociaGuru</h1>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 max-w-sm xl:p-0">
           <div className="p-6">
-            <h2 className="text-center text-3xl font-bold py-2">Sign Up</h2>
+            <h2 className="text-center text-3xl font-bold py-2">Sign In</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="form-control w-full max-w-xs mx-auto mb-4">
-                <label className="label">
-                  <span className="label-text font-bold text-gray-800">
-                    Name
-                  </span>
-                </label>
-                <input
-                  {...register("name", {
-                    required: {
-                      value: true,
-                      message: "Name is required",
-                    },
-                  })}
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full max-w-xs border focus:border-blue-600 focus:shadow-lg outline-none duration-300 transition-all rounded-lg px-6 py-3 mt-2"
-                />
-                <label className="label">
-                  {errors.name?.type === "required" && (
-                    <span className="label-text-alt text-red-600">
-                      {errors.name.message}
-                    </span>
-                  )}
-                </label>
-              </div>
               <div className="form-control w-full max-w-xs mx-auto mb-4">
                 <label className="label">
                   <span className="label-text font-bold text-gray-800">
@@ -111,6 +87,11 @@ const Register = () => {
                   )}
                 </label>
               </div>
+              <div className="pb-3">
+                <p className="text-left font-bold text-blue-600 ml-2">
+                  <Link to="/signin">Forget Password?</Link>
+                </p>
+              </div>
 
               <div className="flex justify-center">
                 <input
@@ -121,11 +102,12 @@ const Register = () => {
               </div>
             </form>
           </div>
+
           <div className="pb-4">
             <p className="text-center font-bold text-gray-800">
-              <Link to="/signin">
-                Do you have an account?
-                <span className="text-blue-600">Sign In</span>
+              <Link to="/signup">
+                Not yet member?
+                <span className="text-blue-600">Sign Up</span>
               </Link>
             </p>
           </div>
@@ -135,4 +117,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;
